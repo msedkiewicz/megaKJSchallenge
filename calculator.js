@@ -53,3 +53,6 @@ Calculator.prototype.run = function () {
 
 var calculator = new Calculator();
 calculator.run();
+
+var calculator2 = new Calculator();
+calculator2.run();
