@@ -15,18 +15,14 @@ do {
     } else {
       if (operation === "+") {
         result = val1 + " + " + val2 + " = " + (val1 + val2);
-      }
-
-      if (operation === "-") {
+      } else if (operation === "-") {
         result = val1 + " - " + val2 + " = " + (val1 - val2);
-      }
-
-      if (operation === "*") {
+      } else if (operation === "*") {
         result = val1 + " * " + val2 + " = " + val1 * val2;
-      }
-
-      if (operation === "/") {
+      } else if (operation === "/") {
         result = val1 + " / " + val2 + " = " + val1 / val2;
+      } else {
+        result = "Zostało podane niepoprawne działanie. Podaj jedno z wybranych działań (+ - * /).";
       }
     }
 
