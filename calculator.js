@@ -1,6 +1,3 @@
-var val1 = parseInt(prompt("Podaj pierwszą liczbę"));
-var val2 = parseInt(prompt("Podaj drugą liczbę"));
-var operation = prompt("Podaj działanie (+ - * /).");
 var operationsHistory = [];
 
 function calculate(a, b, sign) {
@@ -24,9 +21,19 @@ function calculate(a, b, sign) {
   }
 }
 
-var result = calculate(val1, val2, operation);
-console.log(result);
-operationsHistory.push(result);
+do {
+  var val1 = parseInt(prompt("Podaj pierwszą liczbę"));
+  var val2 = parseInt(prompt("Podaj drugą liczbę"));
+  var operation = prompt("Podaj działanie (+ - * /).");
+
+  var result = calculate(val1, val2, operation);
+  console.log(result);
+  operationsHistory.push(result);
+
+  var choice = prompt(
+    "Czy chcesz obliczać dalej? Wpisz N aby zakończyć działanie."
+  );
+} while (choice !== "N");
 
 console.log(operationsHistory);
 // var operationsHistory = [];
