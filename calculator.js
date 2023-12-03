@@ -1,6 +1,7 @@
 var val1 = parseInt(prompt("Podaj pierwszą liczbę"));
 var val2 = parseInt(prompt("Podaj drugą liczbę"));
 var operation = prompt("Podaj działanie (+ - * /).");
+var operationsHistory = [];
 
 function calculate(a, b, sign) {
   if (isNaN(a) || isNaN(b))
@@ -22,6 +23,12 @@ function calculate(a, b, sign) {
       return "Zostało podane niepoprawne działanie. Podaj jedno z wybranych działań (+ - * /).";
   }
 }
+
+var result = calculate(val1, val2, operation);
+console.log(result);
+operationsHistory.push(result);
+
+console.log(operationsHistory);
 // var operationsHistory = [];
 
 // do {
