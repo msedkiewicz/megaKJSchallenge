@@ -3,13 +3,17 @@ var val2 = parseInt(prompt("Podaj drugą liczbę"));
 var operation = prompt("Podaj działanie (+ - * /).");
 
 function calculate(a, b, sign) {
-    switch(sign) {
-        case '+': ;
-        case '-': ;
-        case '*': ;
-        case '/': ;
-        default: ;
-    }
+  switch (sign) {
+    case "+":
+      return a + " + " + b + " = " + (a + b);
+    case "-":
+      return a + " - " + b + " = " + (a - b);
+    case "*":
+      return a + " * " + b + " = " + a * b;
+    case "/":
+      return a + " / " + b + " = " + a / b;
+    default:
+  }
 }
 // var operationsHistory = [];
 
