@@ -16,6 +16,7 @@ function calculate(a, b, sign) {
     }
 
     default:
+      return "Zostało podane niepoprawne działanie. Podaj jedno z wybranych działań (+ - * /).";
   }
 }
 // var operationsHistory = [];
