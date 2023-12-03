@@ -10,8 +10,11 @@ function calculate(a, b, sign) {
       return a + " - " + b + " = " + (a - b);
     case "*":
       return a + " * " + b + " = " + a * b;
-    case "/":
+    case "/": {
+      if (b === 0) return "Nie możesz dzielić przez zero!";
       return a + " / " + b + " = " + a / b;
+    }
+
     default:
   }
 }
