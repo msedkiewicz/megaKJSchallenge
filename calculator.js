@@ -1,10 +1,6 @@
 var operationsHistory = [];
 
 do {
-  var choice = prompt(
-    "Czy chcesz obliczać dalej? Wpisz N aby zakończyć działanie."
-  );
-
   if (choice !== "N") {
     var val1 = parseInt(prompt("Podaj pierwszą liczbę"));
     var val2 = parseInt(prompt("Podaj drugą liczbę"));
@@ -35,6 +31,9 @@ do {
     console.log(result);
     operationsHistory.push(result);
   }
+  var choice = prompt(
+    "Czy chcesz obliczać dalej? Wpisz N aby zakończyć działanie."
+  );
 } while (choice !== "N");
 
 console.log(operationsHistory);
