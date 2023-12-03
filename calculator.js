@@ -10,21 +10,24 @@ do {
     var val2 = parseInt(prompt("Podaj drugą liczbę"));
     var operation = prompt("Podaj działanie (+ - * /).");
     var result;
+    if (isNaN(val1) || isNaN(val2)) {
+      result = "Przynajmniej jedna z wartości jest niepoprawna. Proszę wpisać liczbę";
+    } else {
+      if (operation === "+") {
+        result = val1 + " + " + val2 + " = " + (val1 + val2);
+      }
 
-    if (operation === "+") {
-      result = val1 + " + " + val2 + " = " + (val1 + val2);
-    }
+      if (operation === "-") {
+        result = val1 + " - " + val2 + " = " + (val1 - val2);
+      }
 
-    if (operation === "-") {
-      result = val1 + " - " + val2 + " = " + (val1 - val2);
-    }
+      if (operation === "*") {
+        result = val1 + " * " + val2 + " = " + val1 * val2;
+      }
 
-    if (operation === "*") {
-      result = val1 + " * " + val2 + " = " + val1 * val2;
-    }
-
-    if (operation === "/") {
-      result = val1 + " / " + val2 + " = " + val1 / val2;
+      if (operation === "/") {
+        result = val1 + " / " + val2 + " = " + val1 / val2;
+      }
     }
 
     console.log(result);
