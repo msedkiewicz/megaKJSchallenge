@@ -1,6 +1,8 @@
-var operationsHistory = [];
+function Calculator() {
+  this.operationHistory = [];
+}
 
-function calculate(a, b, sign) {
+Calculator.prototype.calculate = function (a, b, sign) {
   if (isNaN(a) || isNaN(b))
     return "Przynajmniej jedna z wartości jest niepoprawna. Proszę wpisać liczbę";
 
@@ -19,26 +21,35 @@ function calculate(a, b, sign) {
     default:
       return "Zostało podane niepoprawne działanie. Podaj jedno z wybranych działań (+ - * /).";
   }
-}
+};
 
-function printHistory(array) {
-  array.forEach(function (element, index) {
-    console.log('Operacja nr ' + (index + 1) + ': ' + element);
+Calculator.prototype.addToHistory = function (operation) {
+  this.operationHistory.push(operation);
+};
+
+Calculator.prototype.printHistory = function () {
+  this.operationHistory.forEach(function (operation, index) {
+    console.log("Operacja nr " + index + ": " + operation);
   });
-}
+};
 
-do {
-  var val1 = parseInt(prompt("Podaj pierwszą liczbę"));
-  var val2 = parseInt(prompt("Podaj drugą liczbę"));
-  var operation = prompt("Podaj działanie (+ - * /).");
+Calculator.prototype.run = function () {
+  do {
+    var val1 = parseInt(prompt("Podaj pierwszą liczbę"));
+    var val2 = parseInt(prompt("Podaj drugą liczbę"));
+    var operation = prompt("Podaj działanie (+ - * /).");
 
-  var result = calculate(val1, val2, operation);
-  console.log(result);
-  operationsHistory.push(result);
+    var result = this.calculate(val1, val2, operation);
+    console.log(result);
+    this.addToHistory(operation);
 
-  var choice = prompt(
-    "Czy chcesz obliczać dalej? Wpisz N aby zakończyć działanie."
-  );
-} while (choice !== "N");
+    var choice = prompt(
+      "Czy chcesz obliczać dalej? Wpisz N aby zakończyć działanie."
+    );
+  } while (choice !== "N");
 
-printHistory(operationsHistory);
+  this.printHistory();
+};
+
+var calculator = new Calculator();
+calculator.run();
