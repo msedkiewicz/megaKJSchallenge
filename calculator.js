@@ -21,6 +21,12 @@ function calculate(a, b, sign) {
   }
 }
 
+function printHistory(array) {
+  array.forEach(function (element, index) {
+    console.log('Operacja nr ' + (index + 1) + ': ' + element);
+  });
+}
+
 do {
   var val1 = parseInt(prompt("Podaj pierwszą liczbę"));
   var val2 = parseInt(prompt("Podaj drugą liczbę"));
@@ -35,4 +41,4 @@ do {
   );
 } while (choice !== "N");
 
-console.log(operationsHistory);
+printHistory(operationsHistory);
