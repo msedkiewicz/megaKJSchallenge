@@ -3,6 +3,9 @@ var val2 = parseInt(prompt("Podaj drugą liczbę"));
 var operation = prompt("Podaj działanie (+ - * /).");
 
 function calculate(a, b, sign) {
+  if (isNaN(a) || isNaN(b))
+    return "Przynajmniej jedna z wartości jest niepoprawna. Proszę wpisać liczbę";
+
   switch (sign) {
     case "+":
       return a + " + " + b + " = " + (a + b);
