@@ -13,27 +13,22 @@ do {
 
     if (operation === "+") {
       result = val1 + " + " + val2 + " = " + (val1 + val2);
-      console.log(result);
-      operationsHistory.push(result);
     }
 
     if (operation === "-") {
       result = val1 + " - " + val2 + " = " + (val1 - val2);
-      console.log(result);
-      operationsHistory.push(result);
     }
 
     if (operation === "*") {
       result = val1 + " * " + val2 + " = " + val1 * val2;
-      console.log(result);
-      operationsHistory.push(result);
     }
 
     if (operation === "/") {
       result = val1 + " / " + val2 + " = " + val1 / val2;
-      console.log(result);
-      operationsHistory.push(result);
     }
+
+    console.log(result);
+    operationsHistory.push(result);
   }
 } while (choice !== "N");
 
