@@ -1,4 +1,4 @@
-export default class Square { // eksport domyślny
+export class Square {
     constructor(size) {
         this.size = size;
     }
