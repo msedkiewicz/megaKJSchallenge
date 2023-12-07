@@ -1,5 +1,5 @@
 class MyMath {
-    pow(val, level) {
+    static pow(val, level) {
         let result = val;
         for(let i = 1; i < level; i++) {
             result *= val;
@@ -8,15 +8,14 @@ class MyMath {
         return result;
     }
 
-    abs(value) {
+    static abs(value) {
         if(value < 0) return value * -1;
         return value;
     }
 }
 
-const math = new MyMath()
-console.log(`Potęgowanie: ${math.pow(2, 8)}`);
-console.log(`Potęgowanie: ${math.pow(3, 2)}`);
-console.log(`Moduł: ${math.abs(-99)}`);
-console.log(`Moduł: ${math.abs(-0.99)}`);
-console.log(`Moduł: ${math.abs(2)}`);
+console.log(`Potęgowanie: ${MyMath.pow(2, 8)}`);
+console.log(`Potęgowanie: ${MyMath.pow(3, 2)}`);
+console.log(`Moduł: ${MyMath.abs(-99)}`);
+console.log(`Moduł: ${MyMath.abs(-0.99)}`);
+console.log(`Moduł: ${MyMath.abs(2)}`);
