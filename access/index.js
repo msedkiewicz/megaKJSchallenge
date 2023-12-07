@@ -1,26 +1,24 @@
 class User {
-    hash = '';
+    _hash = '';
     constructor(name) {
         this.name = name;
         this.hash = (Math.random() * 100000000 + 100000000).toString();
     }
 
-    setNewHash(newHash) {
+    set  hash(newHash) {
         if(newHash.length < 4) return;
-        this.hash = newHash;
+        this._hash = newHash;
     }
 
-    getHash() {
-        return this.hash;
+    get hash() {
+        return this._hash;
     }
 }
 
 const user = new User('Marcin');
-console.log(user);
-user.setNewHash('asdq');
-console.log(user);
-user.getHash();
-console.log(user);
-user.setNewHash('34qrfw43efd');
-user.getHash();
-console.log(user);
+// console.log(user.hash('askksks')); - hash is not a fuction :P
+
+user.hash = 'Nowa nadzieja';
+console.log(user.hash);
+user.hash = 'Nowa nadzieja 2';
+console.log(user.hash);
