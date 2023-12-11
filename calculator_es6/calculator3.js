@@ -42,13 +42,30 @@ class Calculator {
   }
 }
 
-const calculator = new Calculator({
-  "+": new Operation((a, b) => a + b),
-  "-": new Operation((a, b) => a - b),
-  "*": new Operation((a, b) => a * b),
-  "/": new Operation((a, b) => {
+class CalculatorBuilder {
+  #operations;
+
+  constructor() {
+    this.#operations = new Map();
+  }
+  addOperation(sign, callback) {
+    const operation = new Operation(callback);
+    this.#operations.set(sign, operation);
+    return this;
+  }
+
+  build() {
+    const calculator = new Calculator(this.#operations);
+    return calculator;
+  }
+}
+
+const calculator = new CalculatorBuilder()
+  .addOperation("+", (a, b) => a + b)
+  .addOperation("-", (a, b) => a - b)
+  .addOperation("*", (a, b) => a * b)
+  .addOperation("/", (a, b) => {
     if (b === 0) return " Nie możesz dzielić przez 0!";
     return a / b;
-  }),
-});
-calculator.calculate("10 + 2");
+  })
+  .build();
