@@ -111,6 +111,16 @@ class BinaryCalculator extends Calculator {
     return val.toString(2);
   }
 
+  addToHistory(operation) {
+    this.#operationHistory.push(operation);
+  }
+
+  printHistory() {
+    this.#operationHistory.forEach((operation, index) => {
+      console.log(`Operacja nr ${index + 1}: ${operation}`);
+    });
+  }
+
   run() {
     let choice;
     do {
