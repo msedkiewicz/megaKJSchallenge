@@ -12,10 +12,14 @@ class Operation {
 class Calculator {
   #operations;
   #allowedOperations;
+  #name;
+  #description;
 
-  constructor(operations, allowedOperations) {
+  constructor(name, description, operations, allowedOperations) {
     this.#operations = operations;
     this.#allowedOperations = allowedOperations;
+    this.#name = name;
+    this.#description = description;
   }
 
   getSign(operation) {
@@ -25,6 +29,10 @@ class Calculator {
   getValues(operation, sign) {
     const values = operation.split(sign).map((val) => parseInt(val));
     return values;
+  }
+
+  getInfo() {
+    return `${this.#name} : ${this.#description}`;
   }
 
   calculate(operation) {
@@ -46,6 +54,8 @@ class Calculator {
 class CalculatorBuilder {
   #operations;
   #allowedOperations;
+  #name;
+  #description;
 
   constructor() {
     this.#operations = new Map();
@@ -57,6 +67,16 @@ class CalculatorBuilder {
     return this;
   }
 
+  setName(name) {
+    this.#name = name;
+    return this;
+  }
+
+  setDescription(description) {
+    this.#description = description;
+    return this;
+  }
+
   setAllowedOperations(...operations) {
     this.#allowedOperations = operations;
     return this;
@@ -64,6 +84,8 @@ class CalculatorBuilder {
 
   build() {
     const calculator = new Calculator(
+      this.#name,
+      this.#description,
       this.#operations,
       this.#allowedOperations
     );
@@ -72,6 +94,10 @@ class CalculatorBuilder {
 }
 
 const calculator = new CalculatorBuilder()
+  .setName("Kalkulator w systemie dziesiątkowym")
+  .setDescription(
+    "Prosty kalkulator obliczający sumę, różnicę, iloczyn i iloraz w systemie dziesiątkowym"
+  )
   .setAllowedOperations("+", "-", "*", "/", "^")
   .addOperation("+", (a, b) => a + b)
   .addOperation("-", (a, b) => a - b)
