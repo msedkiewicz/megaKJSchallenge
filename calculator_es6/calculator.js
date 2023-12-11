@@ -1,7 +1,13 @@
 class Calculator {
-  constructor() {
-    this.operationHistory = [];
-  }
+  operationHistory = [];
+
+  calculate() {}
+
+  addToHisotry() {}
+
+  printHistory() {}
+
+  run() {}
 }
 
 const calculator = new Calculator();
