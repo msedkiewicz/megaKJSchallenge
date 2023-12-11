@@ -27,9 +27,17 @@ class Calculator {
     if (operation.includes("*")) return "*";
     if (operation.includes("/")) return "/";
   }
+
+  getValues(operation, sign) {
+    const values = operation.split(sign).map((val) => parseInt(val));
+    return values;
+  }
   calculate(operation) {
     const sign = this.getSign(operation);
-    return sign;
+    const values = this.getValues(operation, sign).perform(...values);
+
+    const result = this.#operations[sign]();
+    return result;
   }
 }
 
