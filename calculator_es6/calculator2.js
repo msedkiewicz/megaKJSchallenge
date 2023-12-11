@@ -20,6 +20,18 @@ class Calculator {
       "/": new Operation((a, b) => a / b),
     };
   }
+
+  getSign(operation) {
+    if (operation.includes("+")) return "+";
+    if (operation.includes("-")) return "-";
+    if (operation.includes("*")) return "*";
+    if (operation.includes("/")) return "/";
+  }
+  calculate(operation) {
+    const sign = this.getSign(operation);
+    return sign;
+  }
 }
 
 const calculator = new Calculator();
+calculator.calculate("10 + 2");
