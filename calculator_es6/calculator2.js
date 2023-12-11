@@ -12,16 +12,8 @@ class Operation {
 class Calculator {
   #operations;
 
-  constructor() {
-    this.#operations = {
-      "+": new Operation((a, b) => a + b),
-      "-": new Operation((a, b) => a - b),
-      "*": new Operation((a, b) => a * b),
-      "/": new Operation((a, b) => {
-        if (b === 0) return " Nie możesz dzielić przez 0!";
-        return a / b;
-      }),
-    };
+  constructor(operations) {
+    this.#operations = operations;
   }
 
   getSign(operation) {
@@ -45,5 +37,13 @@ class Calculator {
   }
 }
 
-const calculator = new Calculator();
+const calculator = new Calculator({
+  "+": new Operation((a, b) => a + b),
+  "-": new Operation((a, b) => a - b),
+  "*": new Operation((a, b) => a * b),
+  "/": new Operation((a, b) => {
+    if (b === 0) return " Nie możesz dzielić przez 0!";
+    return a / b;
+  }),
+});
 calculator.calculate("10 + 2");
