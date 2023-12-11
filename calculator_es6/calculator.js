@@ -22,7 +22,9 @@ class Calculator {
     }
   }
 
-  addToHisotry() {}
+  addToHistory(operation) {
+    this.operationHistory.push(operation);
+  }
 
   printHistory() {}
 
@@ -34,6 +36,7 @@ class Calculator {
       const operation = prompt("Podaj działanie (+ - * /).");
 
       const result = this.calculate(val1, val2, operation);
+      this.addToHistory(result);
 
       console.log("Działam!");
       choice = prompt(
