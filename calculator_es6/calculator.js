@@ -77,6 +77,40 @@ class DecimalCalculator extends Calculator {
 }
 
 class BinaryCalculator extends Calculator {
+  #operationHistory = [];
+
+  calculate(a, b, sign) {
+    const aDec = this.bin2dec(a);
+    const bDec = this.bin2dec(b);
+
+    if (isNaN(a) || isNaN(b))
+      return "Przynajmniej jedna z wartości jest niepoprawna. Proszę wpisać liczbę";
+
+    switch (sign) {
+      case "+":
+        return a + " + " + b + " = " + this.dec2bin(aDec + bDec);
+      case "-":
+        return a + " - " + b + " = " + this.dec2bin(aDec - bDec);
+      case "*":
+        return a + " * " + b + " = " + this.dec2bin(aDec * bDec);
+      case "/": {
+        if (bDec === 0) return "Nie możesz dzielić przez zero!";
+        return a + " / " + b + " = " + this.dec2bin(aDec / bDec);
+      }
+
+      default:
+        return "Zostało podane niepoprawne działanie. Podaj jedno z wybranych działań (+ - * /).";
+    }
+  }
+
+  bin2dec(val) {
+    return parseInt(val, 2);
+  }
+
+  dec2bin(val) {
+    return val.toString(2);
+  }
+
   run() {
     let choice;
     do {
