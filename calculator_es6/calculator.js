@@ -26,7 +26,11 @@ class Calculator {
     this.operationHistory.push(operation);
   }
 
-  printHistory() {}
+  printHistory() {
+    this.operationHistory.forEach((operation, index) => {
+      console.log(`Operacja nr ${index}: ${operation}`);
+    });
+  }
 
   run() {
     let choice;
