@@ -32,11 +32,12 @@ class Calculator {
     const values = operation.split(sign).map((val) => parseInt(val));
     return values;
   }
+
   calculate(operation) {
     const sign = this.getSign(operation);
-    const values = this.getValues(operation, sign).perform(...values);
+    const values = this.getValues(operation, sign);
 
-    const result = this.#operations[sign]();
+    const result = this.#operations[sign].perform(...values);
     return result;
   }
 }
