@@ -28,7 +28,7 @@ class Calculator {
 
   printHistory() {
     this.operationHistory.forEach((operation, index) => {
-      console.log(`Operacja nr ${index}: ${operation}`);
+      console.log(`Operacja nr ${index + 1}: ${operation}`);
     });
   }
 
@@ -41,12 +41,11 @@ class Calculator {
 
       const result = this.calculate(val1, val2, operation);
       this.addToHistory(result);
-
-      console.log("Działam!");
       choice = prompt(
         "Czy chcesz obliczać dalej? Wpisz N aby zakończyć działanie."
       );
     } while (choice !== "N");
+    this.printHistory();
   }
 }
 
