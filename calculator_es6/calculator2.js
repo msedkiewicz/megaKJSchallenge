@@ -17,7 +17,10 @@ class Calculator {
       "+": new Operation((a, b) => a + b),
       "-": new Operation((a, b) => a - b),
       "*": new Operation((a, b) => a * b),
-      "/": new Operation((a, b) => a / b),
+      "/": new Operation((a, b) => {
+        if (b === 0) return " Nie możesz dzielić przez 0!";
+        return a / b;
+      }),
     };
   }
 
