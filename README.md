@@ -6,6 +6,8 @@ This repo contains exercises from Javascript part of Javascript and Typescript c
 
 To start working with code you just need IDE of your choice. To start the app open index.html file from chosen folder in the browser.
 
+Calculator_es5 folder has it's own readme file.
+
 # Wyzwanie JS MegaK
 
 To repozytorium zawiera kod z części poświęconej JavaScriptowi z wyzwania JS i TS od MegaK https://www.linkedin.com/company/megak/.
@@ -13,3 +15,5 @@ To repozytorium zawiera kod z części poświęconej JavaScriptowi z wyzwania JS
 ## Dla programistów
 
 Aby rozpocząć pracę z kodem wystarczy wybrane środowisko programistyczne (IDE). Aby uruchomić aplikację, otwórz plik index.html z wybranego folderu w przeglądarce.
+
+Folder Calculator_es5 posiada własny plik readme.
