@@ -19,10 +19,7 @@ class Calculator {
   }
 
   getSign(operation) {
-    if (operation.includes("+")) return "+";
-    if (operation.includes("-")) return "-";
-    if (operation.includes("*")) return "*";
-    if (operation.includes("/")) return "/";
+    return this.#allowedOperations.find((sign) => operation.includes(sign));
   }
 
   getValues(operation, sign) {
@@ -75,7 +72,7 @@ class CalculatorBuilder {
 }
 
 const calculator = new CalculatorBuilder()
-  .setAllowedOperations("+", "-", "*", "/")
+  .setAllowedOperations("+", "-", "*", "/", "^")
   .addOperation("+", (a, b) => a + b)
   .addOperation("-", (a, b) => a - b)
   .addOperation("*", (a, b) => a * b)
