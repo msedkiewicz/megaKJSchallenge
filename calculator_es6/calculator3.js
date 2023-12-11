@@ -13,9 +13,9 @@ class Calculator {
   #operations;
   #allowedOperations;
 
-  constructor(operations) {
+  constructor(operations, allowedOperations) {
     this.#operations = operations;
-    this.#allowedOperations = Object.keys(operations);
+    this.#allowedOperations = allowedOperations;
   }
 
   getSign(operation) {
@@ -32,21 +32,27 @@ class Calculator {
 
   calculate(operation) {
     const sign = this.getSign(operation);
+
     if (!this.#allowedOperations.includes(sign))
       return "Niedozwolona operacja. Użyj znaku +, -, *, /.";
 
     const values = this.getValues(operation, sign);
 
-    const result = this.#operations[sign].perform(...values);
-    return result;
+    const method = this.#operations.get(sign);
+
+    if (!method) return "Ta operacja nie jest jeszcze możliwa";
+
+    return method.perform(...values);
   }
 }
 
 class CalculatorBuilder {
   #operations;
+  #allowedOperations;
 
   constructor() {
     this.#operations = new Map();
+    this.#allowedOperations = [];
   }
   addOperation(sign, callback) {
     const operation = new Operation(callback);
@@ -54,13 +60,22 @@ class CalculatorBuilder {
     return this;
   }
 
+  setAllowedOperations(...operations) {
+    this.#allowedOperations = operations;
+    return this;
+  }
+
   build() {
-    const calculator = new Calculator(this.#operations);
+    const calculator = new Calculator(
+      this.#operations,
+      this.#allowedOperations
+    );
     return calculator;
   }
 }
 
 const calculator = new CalculatorBuilder()
+  .setAllowedOperations("+", "-", "*", "/")
   .addOperation("+", (a, b) => a + b)
   .addOperation("-", (a, b) => a - b)
   .addOperation("*", (a, b) => a * b)
