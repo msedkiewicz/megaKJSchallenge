@@ -1,7 +1,7 @@
 class Calculator {
   operationHistory = [];
 
-  calculate() {
+  calculate(a, b, sign) {
     if (isNaN(a) || isNaN(b))
       return "Przynajmniej jedna z wartości jest niepoprawna. Proszę wpisać liczbę";
 
@@ -32,6 +32,9 @@ class Calculator {
       const val1 = parseInt(prompt("Podaj pierwszą liczbę"));
       const val2 = parseInt(prompt("Podaj drugą liczbę"));
       const operation = prompt("Podaj działanie (+ - * /).");
+
+      const result = this.calculate(val1, val2, operation);
+
       console.log("Działam!");
       choice = prompt(
         "Czy chcesz obliczać dalej? Wpisz N aby zakończyć działanie."
