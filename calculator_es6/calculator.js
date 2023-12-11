@@ -76,5 +76,28 @@ class DecimalCalculator extends Calculator {
   }
 }
 
+class BinaryCalculator extends Calculator {
+  run() {
+    let choice;
+    do {
+      const val1 = parseInt(
+        prompt("Podaj pierwszą liczbę w systemie dwójkowym")
+      );
+      const val2 = parseInt(prompt("Podaj drugą liczbę w systemie dwójkowym"));
+      const operation = prompt("Podaj działanie (+ - * /).");
+
+      const result = this.calculate(val1, val2, operation);
+      this.addToHistory(result);
+      choice = prompt(
+        "Czy chcesz obliczać dalej? Wpisz N aby zakończyć działanie."
+      );
+    } while (choice !== "N");
+    this.printHistory();
+  }
+}
+
 const decimalCalculator = new DecimalCalculator();
-decimalCalculator.run();
+// decimalCalculator.run();
+
+const binaryCalculator = new BinaryCalculator();
+binaryCalculator.run();
