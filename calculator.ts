@@ -16,17 +16,11 @@ class Operation implements IOperation {
 }
 
 class Calculator {
-  private operations;
-  private allowedOperations;
-  private name;
-  private description;
-
-  constructor(name, description, operations, allowedOperations) {
-    this.operations = operations;
-    this.allowedOperations = allowedOperations;
-    this.name = name;
-    this.description = description;
-  }
+  constructor(
+    private name: string,
+    private description: string,
+    private operations: Map<string, OperationCallback>,
+    private allowedOperations: string[]) { }
 
   getSign(operation) {
     return this.allowedOperations.find((sign) => operation.includes(sign));
