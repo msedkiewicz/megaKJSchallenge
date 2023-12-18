@@ -1,12 +1,12 @@
 type OperationCallback = (a: number, b: number) => number;
 
 interface IOperation {
-  perform: (a: number, b: number) => number;
+  perform: OperationCallback;
 }
 
 class Operation implements IOperation {
-  private callback;
-  constructor(callback) {
+  private callback: OperationCallback;
+  constructor(callback: OperationCallback) {
     this.callback = callback;
   }
 
