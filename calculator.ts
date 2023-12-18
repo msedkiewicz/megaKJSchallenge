@@ -45,11 +45,13 @@ class Calculator {
 
     const values = this.getValues(operation, sign);
 
+    if (values.length !== 2) return 'Niepoprawna operacja!'
+
     const method = this.operations.get(sign);
 
     if (!method) return "Ta operacja nie jest jeszcze możliwa";
 
-    return method.perform(...values);
+    return method.perform(values[0], values[1]);
   }
 }
 

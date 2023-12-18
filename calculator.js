@@ -48,13 +48,15 @@ var Calculator = /** @class */ (function () {
     };
     Calculator.prototype.calculate = function (operation) {
         var sign = this.getSign(operation);
-        if (!this.allowedOperations.includes(sign))
+        if (!sign || !this.allowedOperations.includes(sign))
             return "Niedozwolona operacja. Użyj znaku +, -, *, /.";
         var values = this.getValues(operation, sign);
+        if (values.length !== 2)
+            return 'Niepoprawna operacja!';
         var method = this.operations.get(sign);
         if (!method)
             return "Ta operacja nie jest jeszcze możliwa";
-        return method.perform.apply(method, values);
+        return method.perform(values[0], values[1]);
     };
     return Calculator;
 }());
@@ -101,7 +103,7 @@ var calculator = new CalculatorBuilder()
     .addOperation("*", function (a, b) { return a * b; })
     .addOperation("/", function (a, b) {
     if (b === 0)
-        return " Nie możesz dzielić przez 0!";
+        throw new Error("Nie możesz dzielić przez 0!");
     return a / b;
 })
     .build();
@@ -113,7 +115,7 @@ var calculator2 = new Calculator("Kalkulator w systemie dziesiątkowym", "Prosty
         "/",
         new Operation(function (a, b) {
             if (b === 0)
-                return " Nie możesz dzielić przez 0!";
+                throw new Error("Nie możesz dzielić przez 0!");
             return a / b;
         }),
     ],
