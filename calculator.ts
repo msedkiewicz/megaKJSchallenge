@@ -1,5 +1,7 @@
 type OperationCallback = (a: number, b: number) => number;
 
+type OperationsMap = Map<string, OperationCallback>;
+
 interface IOperation {
   perform: OperationCallback;
 }
@@ -19,7 +21,7 @@ class Calculator {
   constructor(
     private name: string,
     private description: string,
-    private operations: Map<string, OperationCallback>,
+    private operations: OperationsMap,
     private allowedOperations: string[]) { }
 
   getSign(operation) {
@@ -52,7 +54,7 @@ class Calculator {
 }
 
 class CalculatorBuilder {
-  private operations;
+  private operations: OperationsMap;
   private allowedOperations;
   private name;
   private description;
