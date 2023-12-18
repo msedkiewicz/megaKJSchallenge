@@ -1,6 +1,6 @@
 type OperationCallback = (a: number, b: number) => number;
 
-type OperationsMap = Map<string, OperationCallback>;
+class OperationsMap extends Map<string, Operation> { }
 
 interface IOperation {
   perform: OperationCallback;
@@ -54,7 +54,7 @@ class Calculator {
 }
 
 class CalculatorBuilder {
-  private operations: OperationsMap;
+  private operations = new OperationsMap();
   private allowedOperations;
   private name;
   private description;
