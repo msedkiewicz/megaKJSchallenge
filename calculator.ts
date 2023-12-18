@@ -55,14 +55,10 @@ class Calculator {
 
 class CalculatorBuilder {
   private operations = new OperationsMap();
-  private allowedOperations;
-  private name;
-  private description;
+  private allowedOperations: string[] = [];
+  private name: string = '';
+  private description: string = '';
 
-  constructor() {
-    this.operations = new Map();
-    this.allowedOperations = [];
-  }
   addOperation(sign, callback) {
     const operation = new Operation(callback);
     this.operations.set(sign, operation);
