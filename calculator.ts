@@ -59,23 +59,23 @@ class CalculatorBuilder {
   private name: string = '';
   private description: string = '';
 
-  addOperation(sign, callback) {
+  addOperation(sign: string, callback: OperationCallback) {
     const operation = new Operation(callback);
     this.operations.set(sign, operation);
     return this;
   }
 
-  setName(name) {
+  setName(name: string) {
     this.name = name;
     return this;
   }
 
-  setDescription(description) {
+  setDescription(description: string) {
     this.description = description;
     return this;
   }
 
-  setAllowedOperations(...operations) {
+  setAllowedOperations(...operations: string[]) {
     this.allowedOperations = operations;
     return this;
   }

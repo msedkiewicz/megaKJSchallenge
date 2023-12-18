@@ -1,3 +1,25 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var OperationsMap = /** @class */ (function (_super) {
+    __extends(OperationsMap, _super);
+    function OperationsMap() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return OperationsMap;
+}(Map));
 var Operation = /** @class */ (function () {
     function Operation(callback) {
         this.callback = callback;
@@ -9,10 +31,10 @@ var Operation = /** @class */ (function () {
 }());
 var Calculator = /** @class */ (function () {
     function Calculator(name, description, operations, allowedOperations) {
-        this.operations = operations;
-        this.allowedOperations = allowedOperations;
         this.name = name;
         this.description = description;
+        this.operations = operations;
+        this.allowedOperations = allowedOperations;
     }
     Calculator.prototype.getSign = function (operation) {
         return this.allowedOperations.find(function (sign) { return operation.includes(sign); });
@@ -38,8 +60,10 @@ var Calculator = /** @class */ (function () {
 }());
 var CalculatorBuilder = /** @class */ (function () {
     function CalculatorBuilder() {
-        this.operations = new Map();
+        this.operations = new OperationsMap();
         this.allowedOperations = [];
+        this.name = '';
+        this.description = '';
     }
     CalculatorBuilder.prototype.addOperation = function (sign, callback) {
         var operation = new Operation(callback);
