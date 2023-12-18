@@ -24,11 +24,11 @@ class Calculator {
     private operations: OperationsMap,
     private allowedOperations: string[]) { }
 
-  getSign(operation) {
+  getSign(operation: string) {
     return this.allowedOperations.find((sign) => operation.includes(sign));
   }
 
-  getValues(operation, sign) {
+  getValues(operation: string, sign: string) {
     const values = operation.split(sign).map((val) => parseInt(val));
     return values;
   }
@@ -37,7 +37,7 @@ class Calculator {
     return `${this.name} : ${this.description}`;
   }
 
-  calculate(operation) {
+  calculate(operation: string) {
     const sign = this.getSign(operation);
 
     if (!this.allowedOperations.includes(sign))
