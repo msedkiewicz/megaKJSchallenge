@@ -108,20 +108,3 @@ const calculator = new CalculatorBuilder()
   })
   .build();
 
-const calculator2 = new Calculator(
-  "Kalkulator w systemie dziesiątkowym",
-  "Prosty kalkulator obliczający sumę, różnicę, iloczyn i iloraz w systemie dziesiątkowym",
-  new Map([
-    ["+", new Operation((a, b) => a + b)],
-    ["-", new Operation((a, b) => a - b)],
-    ["*", new Operation((a, b) => a * b)],
-    [
-      "/",
-      new Operation((a, b) => {
-        if (b === 0) throw new Error("Nie możesz dzielić przez 0!");
-        return a / b;
-      }),
-    ],
-  ]),
-  ["+", "-", "*", "/", "^"]
-);

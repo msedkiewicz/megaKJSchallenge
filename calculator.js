@@ -107,16 +107,3 @@ var calculator = new CalculatorBuilder()
     return a / b;
 })
     .build();
-var calculator2 = new Calculator("Kalkulator w systemie dziesiątkowym", "Prosty kalkulator obliczający sumę, różnicę, iloczyn i iloraz w systemie dziesiątkowym", new Map([
-    ["+", new Operation(function (a, b) { return a + b; })],
-    ["-", new Operation(function (a, b) { return a - b; })],
-    ["*", new Operation(function (a, b) { return a * b; })],
-    [
-        "/",
-        new Operation(function (a, b) {
-            if (b === 0)
-                throw new Error("Nie możesz dzielić przez 0!");
-            return a / b;
-        }),
-    ],
-]), ["+", "-", "*", "/", "^"]);
