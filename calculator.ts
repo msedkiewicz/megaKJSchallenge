@@ -40,9 +40,7 @@ class Calculator {
   calculate(operation: string) {
     const sign = this.getSign(operation);
 
-    if (!sign) return "Niedozwolona operacja. Użyj znaku +, -, *, /.";
-
-    if (!this.allowedOperations.includes(sign))
+    if (!sign || !this.allowedOperations.includes(sign))
       return "Niedozwolona operacja. Użyj znaku +, -, *, /.";
 
     const values = this.getValues(operation, sign);
