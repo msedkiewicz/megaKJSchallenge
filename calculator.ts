@@ -101,7 +101,7 @@ const calculator = new CalculatorBuilder()
   .addOperation("-", (a, b) => a - b)
   .addOperation("*", (a, b) => a * b)
   .addOperation("/", (a, b) => {
-    if (b === 0) return " Nie możesz dzielić przez 0!";
+    if (b === 0) throw new Error("Nie możesz dzielić przez 0!");
     return a / b;
   })
   .build();
@@ -116,7 +116,7 @@ const calculator2 = new Calculator(
     [
       "/",
       new Operation((a, b) => {
-        if (b === 0) return " Nie możesz dzielić przez 0!";
+        if (b === 0) throw new Error("Nie możesz dzielić przez 0!");
         return a / b;
       }),
     ],
