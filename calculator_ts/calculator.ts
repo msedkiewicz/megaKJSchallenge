@@ -6,6 +6,14 @@ interface IOperation {
   perform: OperationCallback;
 }
 
+enum Arithmetic {
+  Add = "+",
+  Substract = "-",
+  Multiply = "*",
+  Divide = "/",
+  Power = "^",
+}
+
 class Operation implements IOperation {
   private callback: OperationCallback;
   constructor(callback: OperationCallback) {
@@ -22,13 +30,14 @@ class Calculator {
     private name: string,
     private description: string,
     private operations: OperationsMap,
-    private allowedOperations: string[]) { }
+    private allowedOperations: Arithmetic[]
+  ) { }
 
   getSign(operation: string) {
     return this.allowedOperations.find((sign) => operation.includes(sign));
   }
 
-  getValues(operation: string, sign: string) {
+  getValues(operation: string, sign: Arithmetic) {
     const values = operation.split(sign).map((val) => parseInt(val));
     return values;
   }
@@ -57,11 +66,11 @@ class Calculator {
 
 class CalculatorBuilder {
   private operations = new OperationsMap();
-  private allowedOperations: string[] = [];
+  private allowedOperations: Arithmetic[] = [];
   private name: string = '';
   private description: string = '';
 
-  addOperation(sign: string, callback: OperationCallback) {
+  addOperation(sign: Arithmetic, callback: OperationCallback) {
     const operation = new Operation(callback);
     this.operations.set(sign, operation);
     return this;
@@ -77,7 +86,7 @@ class CalculatorBuilder {
     return this;
   }
 
-  setAllowedOperations(...operations: string[]) {
+  setAllowedOperations(...operations: Arithmetic[]) {
     this.allowedOperations = operations;
     return this;
   }
@@ -98,11 +107,17 @@ const calculator = new CalculatorBuilder()
   .setDescription(
     "Prosty kalkulator obliczający sumę, różnicę, iloczyn i iloraz w systemie dziesiątkowym"
   )
-  .setAllowedOperations("+", "-", "*", "/", "^")
-  .addOperation("+", (a, b) => a + b)
-  .addOperation("-", (a, b) => a - b)
-  .addOperation("*", (a, b) => a * b)
-  .addOperation("/", (a, b) => {
+  .setAllowedOperations(
+    Arithmetic.Add,
+    Arithmetic.Substract,
+    Arithmetic.Multiply,
+    Arithmetic.Divide,
+    Arithmetic.Power
+  )
+  .addOperation(Arithmetic.Add, (a, b) => a + b)
+  .addOperation(Arithmetic.Substract, (a, b) => a - b)
+  .addOperation(Arithmetic.Multiply, (a, b) => a * b)
+  .addOperation(Arithmetic.Divide, (a, b) => {
     if (b === 0) throw new Error("Nie możesz dzielić przez 0!");
     return a / b;
   })

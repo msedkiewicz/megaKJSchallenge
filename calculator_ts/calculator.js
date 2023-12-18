@@ -20,6 +20,14 @@ var OperationsMap = /** @class */ (function (_super) {
     }
     return OperationsMap;
 }(Map));
+var Arithmetic;
+(function (Arithmetic) {
+    Arithmetic["Add"] = "+";
+    Arithmetic["Substract"] = "-";
+    Arithmetic["Multiply"] = "*";
+    Arithmetic["Divide"] = "/";
+    Arithmetic["Power"] = "^";
+})(Arithmetic || (Arithmetic = {}));
 var Operation = /** @class */ (function () {
     function Operation(callback) {
         this.callback = callback;
@@ -97,11 +105,11 @@ var CalculatorBuilder = /** @class */ (function () {
 var calculator = new CalculatorBuilder()
     .setName("Kalkulator w systemie dziesiątkowym")
     .setDescription("Prosty kalkulator obliczający sumę, różnicę, iloczyn i iloraz w systemie dziesiątkowym")
-    .setAllowedOperations("+", "-", "*", "/", "^")
-    .addOperation("+", function (a, b) { return a + b; })
-    .addOperation("-", function (a, b) { return a - b; })
-    .addOperation("*", function (a, b) { return a * b; })
-    .addOperation("/", function (a, b) {
+    .setAllowedOperations(Arithmetic.Add, Arithmetic.Substract, Arithmetic.Multiply, Arithmetic.Divide, Arithmetic.Power)
+    .addOperation(Arithmetic.Add, function (a, b) { return a + b; })
+    .addOperation(Arithmetic.Substract, function (a, b) { return a - b; })
+    .addOperation(Arithmetic.Multiply, function (a, b) { return a * b; })
+    .addOperation(Arithmetic.Divide, function (a, b) {
     if (b === 0)
         throw new Error("Nie możesz dzielić przez 0!");
     return a / b;
