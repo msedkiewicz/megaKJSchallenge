@@ -1,4 +1,4 @@
-const arr = [15, 2, 3, 21, 4, 6];
+const arr = [15, 2, 3, 21, 4, 6, 102, 2048, 666];
 
 counter = 0;
 for (let j = 0; j < arr.length; j++) {
