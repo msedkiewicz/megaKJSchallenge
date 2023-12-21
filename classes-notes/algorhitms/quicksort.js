@@ -23,10 +23,18 @@ const partition = (arr, low, high) => {
       swap(arr, j, i);
       j++;
     }
-    swap(arr, j, high);
-    return j;
   }
+  swap(arr, j, high);
+  return j;
 };
 
 quicksort(elements, 0, elements.length - 1);
 console.log(elements);
+
+const elements2 = [];
+for (let i = 0; i < 1000; i++) {
+  elements2.push(Math.ceil(Math.random() * 1000));
+}
+
+quicksort(elements2, 0, elements2.length - 1);
+console.log(elements2);
