@@ -14,3 +14,24 @@ for (let j = 0; j < arr.length; j++) {
 
 console.log(arr);
 console.log(arr.length, counter);
+
+let arr2 = [];
+
+for (let i = 0; i < 1000; i++) {
+  arr2.push(Math.ceil(Math.random() * 1000));
+}
+
+counter = 0;
+for (let j = 0; j < arr2.length; j++) {
+  for (let i = 0; i < arr2.length - 1 - j; i++) {
+    counter++;
+    if (arr2[i] > arr2[i + 1]) {
+      const temp = arr2[i];
+      arr2[i] = arr2[i + 1];
+      arr2[i + 1] = temp;
+    }
+  }
+}
+
+console.log(arr2);
+console.log(arr2.length, counter);
