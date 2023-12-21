@@ -2,7 +2,7 @@
 
 This repository contains basic, ES6+ based calculator.
 
-<!-- Calculator instructions are in Polish. Calculator allows to add, subtract, multiply and divide. Structure is based on alert function. Final version is written in OOP approach. -->
+Calculator instructions are in Polish. Calculator allows to add, subtract, multiply and divide. Structure is based on alert function.
 
 ## For developers
 
@@ -12,7 +12,7 @@ If you want to develop code from this repo, you just need to download it and ope
 
 To repozytorium zawiera podstawowy kalkulator oparty na ES6+.
 
-<!-- Instrukcje kalkulatora są w języku polskim. Kalkulator umożliwia dodawanie, odejmowanie, mnożenie i dzielenie. Struktura opiera się na funkcji alert. Ostateczna wersja jest napisana w podejściu OOP. -->
+Instrukcje kalkulatora są w języku polskim. Kalkulator umożliwia dodawanie, odejmowanie, mnożenie i dzielenie. Struktura opiera się na funkcji alert.
 
 ## Dla developerów
 
