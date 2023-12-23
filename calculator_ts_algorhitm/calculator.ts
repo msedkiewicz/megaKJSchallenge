@@ -95,5 +95,10 @@ const calculateRPN = (input: string): number => {
   return stack[stack.length - 1];
 }
 
-console.log(convertToRPN("1 + 232 * (2 + 421) - 5 "));
-console.log(convertToRPN("(2+3)*51"));
+const calculate = (input: string): number => {
+  const converted = convertToRPN(input);
+  return calculateRPN(converted);
+}
+
+console.log(calculate("1 + 232 * (2 + 421) - 5 "));
+console.log(calculate("(2+3)*51"));
