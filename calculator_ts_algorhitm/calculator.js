@@ -17,10 +17,22 @@ var getPriority = function (operator) {
     }
     throw new Error('Incorrect operator!');
 };
+var isNumber = function (char) {
+    return !isNaN(parseInt(char));
+};
 var convertToRPN = function (input) {
     var chars = __spreadArray([], input, true).filter(function (char) { return char !== ' '; });
     var stack = [];
     var output = [];
+    chars.forEach(function (char, index) {
+        if (isNumber(char)) {
+            if (index > 0 && isNumber(chars[index - 1])) {
+                output[output.length - 1] += char;
+            }
+            else
+                output.push(char);
+        }
+    });
     return output.join(' ');
 };
 console.log(convertToRPN("1 + 232 * (2 + 421) - 5 "));
