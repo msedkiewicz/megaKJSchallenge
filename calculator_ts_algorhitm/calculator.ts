@@ -50,7 +50,9 @@ const convertToRPN = (input: string): string => {
     }
 
   })
-
+  while (stack.length) {
+    output.push(stack.pop() as string);
+  }
   return output.join(' ');
 }
 
