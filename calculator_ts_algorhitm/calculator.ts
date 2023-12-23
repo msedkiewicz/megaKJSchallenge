@@ -56,5 +56,44 @@ const convertToRPN = (input: string): string => {
   return output.join(' ');
 }
 
+const calculateRPN = (input: string): number => {
+  const stack: number[] = [];
+  const elements = input.split(' ');
+
+  elements.forEach(element => {
+    if (isNumber(element)) {
+      stack.push(parseInt(element));
+    } else {
+      const a = stack.pop();
+      const b = stack.pop();
+
+      if (typeof a !== 'undefined' && typeof b !== 'undefined') {
+        switch (element) {
+          case "+": {
+            stack.push(b + a);
+            break;
+          }
+          case "-": {
+            stack.push(b - a);
+            break;
+          }
+          case "*": {
+            stack.push(b * a);
+            break;
+          }
+          case "/": {
+            stack.push(b / a);
+            break;
+          }
+        }
+      }
+
+    }
+
+  })
+
+  return stack[stack.length - 1];
+}
+
 console.log(convertToRPN("1 + 232 * (2 + 421) - 5 "));
 console.log(convertToRPN("(2+3)*51"));
