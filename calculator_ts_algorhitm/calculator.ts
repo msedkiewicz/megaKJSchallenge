@@ -42,6 +42,7 @@ const convertToRPN = (input: string): string => {
         output.push(last);
         stack.pop();
         last = stack[stack.length - 1];
+        if (!last) break;
         lastPriority = getPriority(char);
       }
 
